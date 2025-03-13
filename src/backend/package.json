@@ -3,18 +3,35 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "start": "node dist/index.ts",
+    "dev": "nodemon src/index.ts",
+    "scss": "sass --watch src/resources/scss/:src/public/css"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/express-ejs-layouts": "^2.5.4",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "ejs": "^3.1.10",
+    "eslint-config-prettier": "^10.0.2",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "prettier": "^3.5.2",
+    "sass": "^1.85.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.8",
-    "typescript": "^5.8.2"
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.25.0"
   }
 }
