@@ -19,7 +19,10 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.post("/", (req, res) => {
-  res.send("Got a POST request");
+  console.log("Got a POST request");
+});
+app.post("/new", (req, res) => {
+  res.render("new");
 });
 
 app.listen(port, () => {
