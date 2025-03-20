@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 
 import expressEjsLayouts from "express-ejs-layouts";
+import { route } from "./routes";
 dotenv.config();
 
 const app: Express = express();
@@ -14,16 +15,8 @@ app.set("views", path.join(__dirname, "resources/views"));
 app.use(expressEjsLayouts);
 app.set("layout", "layouts/main");
 
-app.get("/", (req: Request, res: Response) => {
-  res.render("index");
-});
-
-app.post("/", (req, res) => {
-  console.log("Got a POST request");
-});
-app.post("/new", (req, res) => {
-  res.render("new");
-});
+// Add router
+route(app);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
