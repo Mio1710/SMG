@@ -19,6 +19,7 @@
     "eslint-config-prettier": "^10.0.2",
     "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^8.12.2",
     "prettier": "^3.5.2",
     "sass": "^1.85.1"
   },

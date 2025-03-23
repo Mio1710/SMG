@@ -3,4 +3,5 @@ import { NewsController } from "../controllers/NewsController";
 
 export const newsRouter = Router();
 const newsController = new NewsController();
-newsRouter.use("/", newsController.index);
+newsRouter.get("/", newsController.index);
+newsRouter.post("/", newsController.create);

@@ -1,13 +1,17 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 
 import expressEjsLayouts from "express-ejs-layouts";
 import { route } from "./routes";
+import { connectMongoDb } from "./db/mongo.config";
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+// connect to mongodb
+connectMongoDb();
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
