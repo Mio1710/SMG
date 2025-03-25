@@ -19,4 +19,16 @@ export class NewsController {
       console.log("Create error: ", error);
     }
   }
+
+  async getCourse(req: Request, res: Response) {
+    try {
+      const courseId = req.query.id;
+      console.log("courseId: ", courseId);
+
+      const course = await Course.findById("67e2da6d6285fe1e0266bab3");
+      res.json({ data: course });
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  }
 }
