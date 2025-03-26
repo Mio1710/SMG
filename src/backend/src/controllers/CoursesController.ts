@@ -22,11 +22,23 @@ export class CourseController {
 
   async getCourse(req: Request, res: Response) {
     try {
+      const courseId = req.params.id;
+      console.log("courseId: ", courseId);
+
+      const course = await Course.findById(courseId);
+      res.json({ data: course });
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  }
+
+  async deleteCourse(req: Request, res: Response) {
+    try {
       const courseId = req.query.id;
       console.log("courseId: ", courseId);
 
-      const course = await Course.findById("67e2da6d6285fe1e0266bab3");
-      res.json({ data: course });
+      const course = await Course.findByIdAndDelete(courseId);
+      res.json({ msg: "Delete successfully!!", data: course });
     } catch (error) {
       throw new Error(error as string);
     }
