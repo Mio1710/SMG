@@ -1,6 +1,6 @@
 import { Express } from "express";
-import { newsRouter } from "./news";
+import { courseRouter } from "./courses";
 
 export const route = (app: Express) => {
-  app.use("/api/news", newsRouter);
+  app.use("/api/course", courseRouter);
 };

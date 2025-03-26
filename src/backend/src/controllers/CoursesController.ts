@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { Course } from "../models";
-export class NewsController {
+export class CourseController {
   index(_req: Request, res: Response) {
     res.render("index");
   }
