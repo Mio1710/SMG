@@ -6,7 +6,7 @@ import NavigationMenu from '../components/layouts/NavigationMenu.vue';
 
 <template>
   <div class="flex flex-row h-screen">
-    <NavigationMenu />
+    <NavigationMenu class="p-3"/>
     <div>
       <h1>This is layout</h1>
       <slot />
