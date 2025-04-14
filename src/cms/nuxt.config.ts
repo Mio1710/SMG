@@ -7,16 +7,13 @@ export default defineNuxtConfig({
   //   prefix: "Nuxt",
   // },
   devtools: { enabled: true },
-  modules: ["@nuxt/eslint", "@nuxt/ui"],
+  modules: ["@nuxt/eslint"],
   compatibilityDate: "2025-03-31",
   vite: {
     plugins: [tailwindcss()],
     css: {
       preprocessorOptions: {
-        scss: {
-          // additionalData: '@use "~/assets/scss/_variables.scss" as *;',
-          // api: "modern-compiler",
-        },
+        scss: {},
       },
     },
   },
