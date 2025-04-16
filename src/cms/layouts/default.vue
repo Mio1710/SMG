@@ -1,17 +1,16 @@
 <script setup lang="ts">
 
-// import type { NavigationMenuItem } from '@nuxt/ui';
+import NavigationMenu from '~/components/layouts/NavigationMenu.vue';
+
 </script>
 
 <template>
-  <NuxtLayout>
-    <!-- <v-app> -->
-      <!-- <NavigationMenu class="p-3"/> -->
+    <v-app>
+      <NavigationMenu class="p-3"/>
     <div>
       <h1>This is layout</h1>
       <!-- <NuxtPage /> -->
        <slot />
     </div>
-    <!-- </v-app> -->
-  </NuxtLayout>
+    </v-app>
 </template>
