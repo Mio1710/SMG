@@ -1,4 +1,5 @@
 {
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.removeUnused": "explicit"
   },
@@ -15,5 +16,8 @@
   "tailwindCSS.classAttributes": ["class", "ui"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ]
+  ],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
