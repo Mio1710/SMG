@@ -1,19 +1,17 @@
 <script setup lang="ts">
-const emit = defineEmits(["changeDrawer"]);
+import UserTool from "./UserTool.vue";
+
+const emit = defineEmits(["changeRail"]);
 </script>
 
 <template>
   <v-app-bar :elevation="1" height="48">
     <template #prepend>
-      <v-app-bar-nav-icon @click="emit('changeDrawer')" />
+      <v-app-bar-nav-icon @click="emit('changeRail')" />
     </template>
 
-    <v-app-bar-title>Application Bar</v-app-bar-title>
+    <v-app-bar-title>Content Management</v-app-bar-title>
 
-    <template #append>
-      <v-btn icon="mdi-heart" />
-      <v-btn icon="mdi-magnify" />
-      <v-btn icon="mdi-dots-vertical" />
-    </template>
+    <template #append> <UserTool /> </template>
   </v-app-bar>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-  drawer: {
+  rail: {
     type: Boolean,
     default: true,
   },
@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <v-navigation-drawer :rail="props.drawer" permanent>
+  <v-navigation-drawer :rail="props.rail" width="200">
     <div class="flex items-center">
       <v-img
         src="public/logo.svg"

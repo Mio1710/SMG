@@ -2,13 +2,13 @@
 import AppBar from "~/components/layouts/AppBar.vue";
 import NavigationMenu from "~/components/layouts/NavigationMenu.vue";
 
-const drawer = ref(true);
+const rail = ref(false);
 </script>
 
 <template>
   <v-layout>
-    <NavigationMenu :drawer class="p-3" />
-    <AppBar class="p-2" @changeDrawer="drawer = !drawer" />
+    <NavigationMenu :rail class="p-3" />
+    <AppBar class="p-2" @change-rail="rail = !rail" />
 
     <v-main>
       <slot />
