@@ -10,7 +10,13 @@ const props = defineProps({
 <template>
   <v-navigation-drawer :rail="props.drawer" permanent>
     <div class="flex items-center">
-      <v-img src="public/logo.svg" height="48px" width="48px" alt="Medimio" />
+      <v-img
+        src="public/logo.svg"
+        height="48px"
+        width="48px"
+        alt="Medimio"
+        class="ml-1"
+      />
       <span class="w-full ml-2 text-2xl font-bold text-[#45c74c]">
         Miodium</span
       >
