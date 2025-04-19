@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { navigation } from "~/configs";
+
 const props = defineProps({
   rail: {
     type: Boolean,
@@ -25,16 +27,12 @@ const props = defineProps({
     <v-divider />
 
     <v-list density="compact" nav>
-      <v-list-item prepend-icon="mdi-home-city" title="Home" value="home" />
       <v-list-item
-        prepend-icon="mdi-account"
-        title="My Account"
-        value="account"
-      />
-      <v-list-item
-        prepend-icon="mdi-account-group-outline"
-        title="Users"
-        value="users"
+        v-for="item in navigation"
+        :key="item.to"
+        :prepend-icon="item.icon"
+        :title="item.title"
+        :value="item.to"
       />
     </v-list>
   </v-navigation-drawer>

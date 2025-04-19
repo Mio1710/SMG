@@ -12,6 +12,6 @@ const emit = defineEmits(["changeRail"]);
 
     <v-app-bar-title>Content Management</v-app-bar-title>
 
-    <template #append> <UserTool /> </template>
+    <template #append> <UserTool class="px-2" /> </template>
   </v-app-bar>
 </template>
