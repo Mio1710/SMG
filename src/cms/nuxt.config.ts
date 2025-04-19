@@ -1,23 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite";
-import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+import tailwindcss from '@tailwindcss/vite'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
-  css: ["~/assets/css/main.css", "~/assets/scss/main.scss"],
+  css: ['~/assets/css/main.css', '~/assets/scss/main.scss'],
   build: {
-    transpile: ["vuetify"],
+    transpile: ['vuetify'],
   },
   devtools: { enabled: false },
   modules: [
     (_options, nuxt) => {
-      nuxt.hooks.hook("vite:extendConfig", (config) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }));
-      });
+        config.plugins.push(vuetify({ autoImport: true }))
+      })
     },
-    "@nuxt/eslint",
+    '@nuxt/eslint',
+    '@vee-validate/nuxt',
   ],
-  compatibilityDate: "2025-03-31",
+  compatibilityDate: '2025-03-31',
   vite: {
     plugins: [tailwindcss()],
     css: {
@@ -31,4 +32,15 @@ export default defineNuxtConfig({
       },
     },
   },
-});
+  veeValidate: {
+    // disable or enable auto imports
+    autoImports: true,
+    // Use different names for components
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  },
+})
