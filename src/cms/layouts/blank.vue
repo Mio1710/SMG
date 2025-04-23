@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>This is INDEX</h1>
+  <v-layout>
+    <slot />
+  </v-layout>
 </template>

@@ -16,7 +16,6 @@ export default defineNuxtConfig({
       })
     },
     '@nuxt/eslint',
-    '@vee-validate/nuxt',
   ],
   compatibilityDate: '2025-03-31',
   vite: {
@@ -30,17 +29,6 @@ export default defineNuxtConfig({
       template: {
         transformAssetUrls,
       },
-    },
-  },
-  veeValidate: {
-    // disable or enable auto imports
-    autoImports: true,
-    // Use different names for components
-    componentNames: {
-      Form: 'VeeForm',
-      Field: 'VeeField',
-      FieldArray: 'VeeFieldArray',
-      ErrorMessage: 'VeeErrorMessage',
     },
   },
 })
