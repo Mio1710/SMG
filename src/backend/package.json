@@ -14,6 +14,7 @@
   "dependencies": {
     "@types/ejs": "^3.1.5",
     "@types/express-ejs-layouts": "^2.5.4",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "elastic-apm-node": "^4.11.2",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.8",
     "eslint": "^9.21.0",
