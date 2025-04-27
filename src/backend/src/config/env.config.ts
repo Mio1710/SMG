@@ -10,5 +10,6 @@ export const configEnv = {
     USERNAME: process.env.USER_NAME || "",
     PASSWORD: process.env.USER_PASSWORD || "",
     HOST_PORT: process.env.DB_HOST_PORT || "mongodb://localhost:27017",
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || "admin",
   },
 };

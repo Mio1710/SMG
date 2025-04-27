@@ -6,7 +6,8 @@
     "build": "npx tsc",
     "start": "node dist/index.ts",
     "dev": "nodemon src/index.ts",
-    "scss": "sass --watch src/resources/scss/:src/public/css"
+    "scss": "sass --watch src/resources/scss/:src/public/css",
+    "init-db": "npx ts-node src/scripts/init-db.ts"
   },
   "author": "",
   "license": "ISC",
