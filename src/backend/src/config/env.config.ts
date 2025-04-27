@@ -12,4 +12,9 @@ export const configEnv = {
     HOST_PORT: process.env.DB_HOST_PORT || "mongodb://localhost:27017",
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || "admin",
   },
+  AUTH: {
+    ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || 36000,
+    ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || "",
+    REFRESH_TOKEN_LIFETIME: process.env.REFRESH_TOKEN_LIFETIME || "30d",
+  },
 };

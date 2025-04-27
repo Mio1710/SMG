@@ -1,10 +1,10 @@
-import express, { Express } from "express";
 import dotenv from "dotenv";
+import express, { Express } from "express";
 import path from "path";
 
 import expressEjsLayouts from "express-ejs-layouts";
-import { route } from "./routes";
 import { connectMongoDb } from "./db/mongo.config";
+import { route } from "./routes";
 dotenv.config();
 
 const app: Express = express();
@@ -18,6 +18,10 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "resources/views"));
 app.use(expressEjsLayouts);
 app.set("layout", "layouts/main");
+
+// Setup for API
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Add router
 route(app);
