@@ -16,13 +16,13 @@ export class AuthenController {
       const { email, password } = req.body;
       // get user
       const user = await User.findOne({ email });
-      console.log("User found: ", user, email, password);
+      console.log("User found: ", user?.password, email, password);
       if (!user) {
         return res.status(404).json({ msg: "User not found" });
       }
 
       // compare password by bcrypt
-      const isMatch = await bcrypt.compare(password, user?.password || "");
+      const isMatch = await bcrypt.compare(password, user?.password);
 
       console.log("isMatch: ", isMatch);
       if (!isMatch) {
