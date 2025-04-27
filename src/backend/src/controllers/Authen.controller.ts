@@ -18,15 +18,15 @@ export class AuthenController {
       const user = await User.findOne({ email });
       console.log("User found: ", user?.password, email, password);
       if (!user) {
-        return res.status(404).json({ msg: "User not found" });
+        res.status(404).json({ msg: "User not found" }).end();
       }
 
       // compare password by bcrypt
-      const isMatch = await bcrypt.compare(password, user?.password);
+      const isMatch = await bcrypt.compare(password, user?.password || "");
 
       console.log("isMatch: ", isMatch);
       if (!isMatch) {
-        return res.status(401).json({ msg: "Invalid credentials" });
+        res.status(401).json({ msg: "Invalid credentials" }).end();
       }
 
       // generate token
@@ -41,10 +41,10 @@ export class AuthenController {
       console.log("Access token: ", accessToken);
 
       // Implement login logic
-      return res.json({ msg: "Login successful", accessToken });
+      res.json({ msg: "Login successful", accessToken }).end();
     } catch (error) {
       console.error("Login error: ", error);
-      return res.status(500).json({ msg: "Login failed", error });
+      res.status(500).json({ msg: "Login failed", error }).end();
     }
   }
 
