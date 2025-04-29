@@ -6,7 +6,8 @@
     "build": "npx tsc",
     "start": "node dist/index.ts",
     "dev": "nodemon src/index.ts",
-    "scss": "sass --watch src/resources/scss/:src/public/css"
+    "scss": "sass --watch src/resources/scss/:src/public/css",
+    "init-db": "npx ts-node src/scripts/init-db.ts"
   },
   "author": "",
   "license": "ISC",
@@ -14,18 +15,22 @@
   "dependencies": {
     "@types/ejs": "^3.1.5",
     "@types/express-ejs-layouts": "^2.5.4",
+    "@types/jsonwebtoken": "^9.0.9",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "elastic-apm-node": "^4.11.2",
     "eslint-config-prettier": "^10.0.2",
     "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.2",
     "prettier": "^3.5.2",
     "sass": "^1.85.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.8",
     "eslint": "^9.21.0",

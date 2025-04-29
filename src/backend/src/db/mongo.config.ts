@@ -11,3 +11,13 @@ export const connectMongoDb = async () => {
     throw new Error("Connect mongodb failed!!");
   }
 };
+
+export const disconnectMongoDb = async () => {
+  try {
+    await mongoose.disconnect();
+    console.log("Disconnect mongodb successfully!!");
+  } catch (error) {
+    console.log("Disconnect mongodb failed!!", error);
+    throw new Error("Disconnect mongodb failed!!");
+  }
+};

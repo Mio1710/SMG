@@ -3,8 +3,6 @@
 - ExpressJS
 - MongoDB
 
-# Migration
+# MongoDB
 
-```
-
-```
+- Use ID that generated as default for best practices
