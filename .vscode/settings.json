@@ -2,6 +2,8 @@
   "files.trimTrailingWhitespace": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  // tab size
+  "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.removeUnused": "explicit",
     "source.organizeImports": "explicit",
