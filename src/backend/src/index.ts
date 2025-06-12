@@ -3,6 +3,9 @@ import express, { Express } from "express";
 import path from "path";
 
 import expressEjsLayouts from "express-ejs-layouts";
+import * as swaggerUi from "swagger-ui-express";
+import { swaggerDocument } from "./routes/swagger";
+
 import { connectMongoDb } from "./db/mongo.config";
 import { route } from "./routes";
 dotenv.config();
@@ -22,6 +25,9 @@ app.set("layout", "layouts/main");
 // Setup for API
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Add router
 route(app);
