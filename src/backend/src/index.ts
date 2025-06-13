@@ -3,8 +3,12 @@ import express, { Express } from "express";
 import path from "path";
 
 import expressEjsLayouts from "express-ejs-layouts";
+import fs from "fs";
 import * as swaggerUi from "swagger-ui-express";
-import { swaggerDocument } from "./routes/swagger";
+import * as YAML from "yaml";
+
+const file = fs.readFileSync("./src/routes/swagger.yaml", "utf8");
+const swaggerDocument = YAML.parse(file);
 
 import { connectMongoDb } from "./db/mongo.config";
 import { route } from "./routes";

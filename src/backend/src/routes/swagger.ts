@@ -20,11 +20,33 @@ export const swaggerDocument = {
               schema: {
                 type: "object",
                 properties: {
-                  email: { type: "string", format: "email" },
-                  password: { type: "string", minLength: 6 },
+                  email: { type: "string" },
+                  password: { type: "string" },
                 },
               },
             },
+          },
+        },
+        responses: {
+          200: {
+            description: "Login successful",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    msg: { type: "string" },
+                    accessToken: { type: "string" },
+                  },
+                },
+              },
+            },
+          },
+          401: {
+            description: "Invalid credentials",
+          },
+          404: {
+            description: "User not found",
           },
         },
       },
