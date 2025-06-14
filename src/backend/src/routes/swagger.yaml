@@ -1,38 +1,57 @@
 openapi: 3.0.0
 info:
-  title: Sample API
-  description: Optional multiline or single-line description in HTML.
-  version: 0.1.9
+  title: Miodium API
+  description: Miodium API Documentation
+  version: 1.0.0
 
 tags:
+  - name: Auth
+    description: Auth API
   - name: users
-    description: users API
+    description: Users API
 
 paths:
-  # [GET] users
-  /users:
-    get:
+  # [POST] Login
+  /auth/login:
+    post:
       tags:
-        - users
-      summary: Find All Users
+        - Auth
+      summary: Login User
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/schemas/auth/login"
       responses:
         200:
           description: "OK"
+        400:
+          description: "Bad Request"
+        401:
+          description: "Unauthorized"
         500:
           description: "Server Error"
-
-    # [POST] users
+  # [POST] Register
+  /auth/register:
     post:
       tags:
-        - users
-      summary: Add User
+        - Auth
+      summary: Register User
       parameters:
         - name: body
           in: body
           description: user Data
           required: true
           schema:
-            $ref: "#/definitions/users"
+            type: object
+            properties:
+              email:
+                type: string
+                description: user Email
+              password:
+                type: string
+                description: user Password
       responses:
         201:
           description: "Created"
@@ -43,74 +62,66 @@ paths:
         500:
           description: "Server Error"
 
-  # [GET] users/id
+  # [GET] Get User
   /users/{id}:
     get:
       tags:
         - users
-      summary: Find User By Id
+      summary: Get User by ID
       parameters:
         - name: id
           in: path
-          description: User Id
           required: true
-          type: integer
+          type: string
+          description: User ID
       responses:
         200:
           description: "OK"
-        409:
-          description: "Conflict"
+        404:
+          description: "Not Found"
         500:
           description: "Server Error"
 
-    # [PUT] users/id
     put:
       tags:
         - users
-      summary: Update User By Id
+      summary: Update User by ID
       parameters:
         - name: id
           in: path
-          description: user Id
           required: true
-          type: integer
+          type: string
+          description: User ID
         - name: body
           in: body
-          description: user Data
+          description: user Data to update
           required: true
           schema:
-            $ref: "#/definitions/users"
+            $ref: "#/schemas/users"
       responses:
         200:
           description: "OK"
         400:
           description: "Bad Request"
-        409:
-          description: "Conflict"
+        404:
+          description: "Not Found"
         500:
           description: "Server Error"
-
-    # [DELETE] users/id
-    delete:
-      tags:
-        - users
-      summary: Delete User By Id
-      parameters:
-        - name: id
-          in: path
-          description: user Id
-          required: true
-          type: integer
-      responses:
-        200:
-          description: "OK"
-        409:
-          description: "Conflict"
-        500:
-          description: "Server Error"
-
-# definitions
-definitions:
+# Schema Definitions
+schemas:
+  auth:
+    login:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          description: user Email
+        password:
+          type: string
+          description: user Password
   users:
     type: object
     required:
