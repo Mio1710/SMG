@@ -4,6 +4,10 @@ info:
   description: Miodium API Documentation
   version: 1.0.0
 
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
 tags:
   - name: Auth
     description: Auth API
@@ -17,12 +21,11 @@ paths:
       tags:
         - Auth
       summary: Login User
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            $ref: "#/schemas/auth/login"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/schemas/auth/login"
       responses:
         200:
           description: "OK"

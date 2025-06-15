@@ -26,9 +26,7 @@ app.set("views", path.join(__dirname, "resources/views"));
 app.use(expressEjsLayouts);
 app.set("layout", "layouts/main");
 
-// Setup for API
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

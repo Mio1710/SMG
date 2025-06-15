@@ -1,13 +1,9 @@
 import bcrypt from "bcrypt";
-// import  { Request, Response } from "express";
-import * as express from "express";
-
-import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 import { configEnv } from "../config/env.config";
 import { User } from "../models";
-
 export class AuthenController {
-  async login(req: express.Request, res: express.Response) {
+  async login(req: Request, res: Response) {
     try {
       console.log("Login request body: ", req.body);
 
@@ -18,15 +14,18 @@ export class AuthenController {
       const user = await User.findOne({ email });
       console.log("User found: ", user?.password, email, password);
       if (!user) {
-        res.status(404).json({ msg: "User not found" }).end();
+        res.status(200).json({
+          error: "USER_NOT_FOUND",
+          msg: "User not found",
+        });
       }
 
-      // compare password by bcrypt
+      // // compare password by bcrypt
       const isMatch = await bcrypt.compare(password, user?.password || "");
 
-      console.log("isMatch: ", isMatch);
+      // console.log("isMatch: ", isMatch);
       if (!isMatch) {
-        res.status(401).json({ msg: "Invalid credentials" }).end();
+        res.status(401).json({ msg: "Invalid credentials" });
       }
 
       // generate token
@@ -37,18 +36,15 @@ export class AuthenController {
         email: user?.email,
       };
 
-      const accessToken = jwt.sign(data, accessSecret, { expiresIn: 36000 });
-      console.log("Access token: ", accessToken);
-
       // Implement login logic
-      res.json({ msg: "Login successful", accessToken }).end();
+      res.json({ msg: "Login successful", data, accessSecret });
     } catch (error) {
       console.error("Login error: ", error);
-      res.status(500).json({ msg: "Login failed", error }).end();
+      res.status(500).json({ code: "LOGIN_FALL", msg: error });
     }
   }
 
-  async register(req: express.Request, res: express.Response) {
+  async register(req: Request, res: Response) {
     console.log("register request body: ", req, res);
     // Implement registration logic
     res.send("Registration successful");

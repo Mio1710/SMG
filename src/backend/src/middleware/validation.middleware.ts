@@ -8,6 +8,8 @@ export function validateData(schema: z.ZodObject<z.ZodRawShape>) {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
+        console.log("Validation error: ", error.errors);
+
         const errorMessages = error.errors.map((issue: z.ZodIssue) => ({
           message: `${issue.path.join(".")} is ${issue.message}`,
         }));

@@ -12,7 +12,7 @@ const initDb = async () => {
     const hashPassword = await bcrypt.hash(
       configEnv.DB.ADMIN_PASSWORD,
       saltRounds
-    ); // Replace with actual hashed password
+    );
     const user = await User.create({
       name: "Admin",
       email: "admin@gmail.com",
