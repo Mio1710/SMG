@@ -6,7 +6,7 @@ export class UserController {
     const query = req.query;
     console.log("query: ", query);
 
-    const data = await User.find({});
+    const data = await User.find();
     console.log("data: ", data);
 
     res.status(200).json({ data, msg: "Success" });

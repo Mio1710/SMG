@@ -13,7 +13,10 @@ export const configEnv = {
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || "admin_password",
   },
   AUTH: {
-    ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || 36000,
+    ACCESS_TOKEN_LIFETIME: parseInt(
+      process.env.ACCESS_TOKEN_LIFETIME ?? "36000",
+      10
+    ),
     ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || "",
     REFRESH_TOKEN_LIFETIME: process.env.REFRESH_TOKEN_LIFETIME || "30d",
   },

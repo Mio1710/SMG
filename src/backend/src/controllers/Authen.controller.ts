@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 import { configEnv } from "../config/env.config";
 import { User } from "../models";
 export class AuthenController {
@@ -23,21 +24,25 @@ export class AuthenController {
       // // compare password by bcrypt
       const isMatch = await bcrypt.compare(password, user?.password || "");
 
-      // console.log("isMatch: ", isMatch);
       if (!isMatch) {
-        res.status(401).json({ msg: "Invalid credentials" });
+        res.status(401).json({
+          error: "INVALID_CREDENTIALS",
+          msg: "Invalid credentials",
+        });
       }
-
-      // generate token
-      const accessSecret = configEnv.AUTH.ACCESS_TOKEN_SECRET;
 
       const data = {
         id: user?._id,
         email: user?.email,
       };
+      // generate token
+      const accessSecret = configEnv.AUTH.ACCESS_TOKEN_SECRET;
+      const accessToken = jwt.sign(data, accessSecret, {
+        expiresIn: configEnv.AUTH.ACCESS_TOKEN_LIFETIME,
+      });
 
       // Implement login logic
-      res.json({ msg: "Login successful", data, accessSecret });
+      res.json({ msg: "Login successful", data, accessToken });
     } catch (error) {
       console.error("Login error: ", error);
       res.status(500).json({ code: "LOGIN_FALL", msg: error });
