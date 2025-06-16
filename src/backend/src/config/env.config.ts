@@ -18,6 +18,9 @@ export const configEnv = {
       10
     ),
     ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || "",
-    REFRESH_TOKEN_LIFETIME: process.env.REFRESH_TOKEN_LIFETIME || "30d",
+    REFRESH_TOKEN_LIFETIME: parseInt(
+      process.env.REFRESH_TOKEN_LIFETIME ?? "2592000"
+    ),
+    REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET || "",
   },
 };

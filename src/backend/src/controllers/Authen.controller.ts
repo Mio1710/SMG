@@ -12,7 +12,7 @@ export class AuthenController {
 
       const { email, password } = req.body;
       // get user
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }).exec();
       console.log("User found: ", user?.password, email, password);
       if (!user) {
         res.status(200).json({
@@ -40,6 +40,20 @@ export class AuthenController {
       const accessToken = jwt.sign(data, accessSecret, {
         expiresIn: configEnv.AUTH.ACCESS_TOKEN_LIFETIME,
       });
+
+      // generate refresh token
+      const refreshSecret = configEnv.AUTH.REFRESH_TOKEN_SECRET;
+      const refreshToken = jwt.sign(data, refreshSecret, {
+        expiresIn: configEnv.AUTH.REFRESH_TOKEN_LIFETIME,
+      });
+      console.log("Access user?.emailuser?.emailuser?.email: ", user?.email);
+
+      // Save refresh token to user (optional, if you want to manage refresh tokens)
+      const updateUser = await User.findOneAndUpdate(
+        { email: user?.email },
+        { $set: { refreshToken: refreshToken } }
+      );
+      console.log("updateUser useruseruser: ", updateUser);
 
       // Implement login logic
       res.json({ msg: "Login successful", data, accessToken });
