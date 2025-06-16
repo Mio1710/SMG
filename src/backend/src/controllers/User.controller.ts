@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+import { IRequest } from "../interface/IRequest.interface";
 import { User } from "../models";
 
 export class UserController {
-  async index(req: Request, res: Response) {
+  async index(req: IRequest, res: Response) {
     const query = req.query;
-    console.log("query: ", query);
+    console.log("query: ", query, req.user);
 
     const data = await User.find();
     console.log("data: ", data);

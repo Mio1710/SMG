@@ -1,10 +1,11 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
 import { configEnv } from "../config/env.config";
+import { IRequest } from "../interface/IRequest.interface";
 import { User } from "../models";
 
 export const authMiddleware = async (
-  req: Request,
+  req: IRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -28,6 +29,10 @@ export const authMiddleware = async (
       res.status(404).json({ error: "User not found" });
       return;
     }
+    req.user = {
+      id: user._id.toString(),
+      email: user.email,
+    };
     next();
   } catch (error) {
     console.error("Authentication error:", error);

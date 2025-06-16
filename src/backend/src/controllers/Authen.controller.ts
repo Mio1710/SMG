@@ -49,6 +49,33 @@ export class AuthenController {
     }
   }
 
+  async refreshToken(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+
+      // Verify the token
+      const decoded = jwt.verify(token, configEnv.AUTH.ACCESS_TOKEN_SECRET);
+      if (!decoded || typeof decoded === "string") {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+
+      // Generate a new token
+      const newAccessToken = jwt.sign(
+        { id: (decoded as any).id, email: (decoded as any).email },
+        configEnv.AUTH.ACCESS_TOKEN_SECRET,
+        { expiresIn: configEnv.AUTH.ACCESS_TOKEN_LIFETIME }
+      );
+
+      res.json({ accessToken: newAccessToken });
+    } catch (error) {
+      console.error("Refresh token error: ", error);
+      res.status(500).json({ error: "Failed to refresh token" });
+    }
+  }
+
   async register(req: Request, res: Response) {
     console.log("register request body: ", req, res);
     // Implement registration logic
